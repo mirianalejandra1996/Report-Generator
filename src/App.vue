@@ -1,26 +1,67 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <router-view/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import TkambioLayout from '@/layout/TkambioLayout';
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    // TkambioLayout,
+  },
+};
 </script>
 
 <style>
+
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: ArgentumSans;
+  src: url('./assets/fonts/ArgentumSans-Black.ttf') format('truetype');
+    font-weight: 900;
+}
+
+@font-face {
+  font-family: ArgentumSans;
+  src: url('./assets/fonts/ArgentumSans-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+}
+
+ @font-face {
+  font-family: 'ArgentumSans';
+  src: url('./assets/fonts/ArgentumSans-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: ArgentumSans;
+  src: url('./assets/fonts/ArgentumSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'ArgentumSans';
+  src: url('./assets/fonts/ArgentumSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-family: 'ArgentumSans', sans-serif;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 2.063rem;
+  color: #181818;
+  margin-top: 5rem;
+  font-weight: 400;
 }
 </style>
