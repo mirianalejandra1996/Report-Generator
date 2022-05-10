@@ -19,7 +19,7 @@ export default {
 <style scoped>
 
 .tkambio-layout{
-    background-color: red;
+    /* background-color: red; */
     height: 100%;
 }
 </style>

@@ -12,7 +12,7 @@ export default {
 </script>
    
 <style lang="scss" scoped>
-    @import "@/scss/variables.scss";
+    @import "@/scss/abstracts/variables.scss";
  
     .navbar__container {
         background: linear-gradient(180deg, $blueLight -2.37%, $blueMedium 124.84%, $blueMedium 124.84%);

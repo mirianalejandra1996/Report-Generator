@@ -1,0 +1,34 @@
+// Global stylesheet where we will import all other stylesheets
+
+// fonts
+@import './abstracts/fonts.scss';
+// variables
+@import './abstracts/variables.scss';
+
+   
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+
+#app {
+    font-family: 'ArgentumSans', sans-serif;
+    height: 100vh;
+  }
+
+h1 {
+    font-size: $fontSizeBig;
+    color: $black;
+    font-weight: 400;
+}
+
+h2 {
+    font-size: $fontSizeNormal;
+    color: $white;
+}
+
+p {
+    font-size: $fontSizeSmall;
+    color: $white;
+}

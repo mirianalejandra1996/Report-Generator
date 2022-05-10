@@ -1,31 +1,36 @@
 <template>
   <div class="reports-page">
     <h1>Generador de reportes TK</h1>
-    <div class="table">
-      <div>Titulo         Fecha Creación       Acción</div>
-    </div>
+    <Table/>
   </div>
 </template>
 
 <script>
+import Table from '@/components/Table/Table';
+
+
 
 export default {
   name: "reportsPage",
-//   components: {
-//   },
+  components: {
+    Table,
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-    // @import "@/scss/variables.scss";
+    @import "@/scss/abstracts/variables.scss";
 
   .reports-page{
-    background: gray;
     height: calc(100% - 4.62rem);
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  h1 {
+    margin-top: 5rem;
   }
 
 </style>
