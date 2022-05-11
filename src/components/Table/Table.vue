@@ -82,14 +82,18 @@ export default {
     display: inline-block;
     background-color: $gray;
     width: 5px;
-    height: 90%;
+    height: 80%;
      
     }
 
-// Removing last vertical line
-tr td:last-of-type .table__field::after{
-    content: none;
-}
+        // Removing last vertical line
+    td .table__field:not(:last-child)::after {
+        content: '';
+        display: inline-block;
+        background-color: $gray;
+        width: 5px;
+        height: 80%;
+    }
     
   .right {
       text-align: end;
