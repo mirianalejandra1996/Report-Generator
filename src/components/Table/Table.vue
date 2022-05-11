@@ -18,7 +18,12 @@
                 <tr>
                     <td scope="row" class="table__text-body--small left">Reporte de usuario 1</td>
                     <td scope="row" class="table__text-body center">04/02/2020</td>
-                    <th class="table__text-body--bold right">Descargar</th>
+                    <td class="table__text-body--bold right">Descargar</td>
+                </tr>
+                <tr>
+                    <td scope="row" class="table__text-body--small left">Reporte de usuario 1</td>
+                    <td scope="row" class="table__text-body center">04/02/2020</td>
+                    <td class="table__text-body--bold right">Descargar</td>
                 </tr>
                
             </tbody>
@@ -54,7 +59,7 @@ export default {
         width: 100%;
 
         &__header {
-            border-bottom: 2px solid #c0c0c05c;
+            border-bottom: 4px solid $gray;
         }
 
   }
@@ -62,6 +67,21 @@ export default {
     td, th {
         padding: 1rem 0;
     }
+
+    tr { 
+        border: 1px solid $gray;
+    }
+
+// ! Experimento
+// border-right: 1px solid;
+// line-height: 10px;
+    td + td { 
+        border-left:4px solid $gray; 
+        border-right: 4px solid $gray;
+    }
+        // td + td { 
+        //     border-left:4px solid $gray; 
+        // }
 
   .right {
       text-align: end;
@@ -77,7 +97,6 @@ export default {
 
     
 .table__text-header {
-// h2 {
     font-size: $fontSizeNormal;
     font-size: 1.2rem;
     color: $white;
@@ -104,9 +123,5 @@ export default {
     color: $white;
     font-weight: 700;
 }
-p {
-// p {
-    font-size: $fontSizeSmall;
-    color: $white;
-}
+
 </style>
