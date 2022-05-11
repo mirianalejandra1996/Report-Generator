@@ -40,7 +40,6 @@ export default {
 
     .table__field {
     border: 0;
-    // height: 66px;
     position: relative;
     }
    
