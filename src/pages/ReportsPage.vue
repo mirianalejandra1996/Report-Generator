@@ -30,7 +30,8 @@ export default {
   }
 
   h1 {
-    margin-top: 5rem;
+    // margin-top: 5rem;
+    margin-top: 3.438rem;
   }
 
 </style>

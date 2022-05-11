@@ -10,7 +10,7 @@
                 </tr>
             </thead>
             <tbody class="table__body">
-                <tr>
+                <!-- <tr>
                     <td scope="row" class="table__field table__text-body--small left">
                             Reporte de usuario 1
                     </td>
@@ -21,31 +21,23 @@
                             <span class="table__text-body--bold">Descargar</span>
                             <img class="download-image" src="../../assets/icons/download.svg" alt="download">
                     </td>
-                </tr>
-                <tr>
+                </tr> -->
+                <!-- <tr v-for="report in this.reports"> -->
+                <tr v-for="report in reports" :key="report.id">
                     <td scope="row" class="table__field table__text-body--small left">
-                            Reporte de usuario 1
+                            {{report.title}}
+                            <!-- Reporte de usuario 1 -->
                     </td>
                     <td scope="row" class="table__field table__text-body center">
-                            04/02/2020
+                            {{report.initDate}}
+                            <!-- 04/02/2020 -->
                     </td>
                     <td class="table__field right flex">
                             <span class="table__text-body--bold">Descargar</span>
                             <img class="download-image" src="../../assets/icons/download.svg" alt="download">
                     </td>
                 </tr>
-                <tr>
-                    <td scope="row" class="table__field table__text-body--small left">
-                            Reporte de usuario 1
-                    </td>
-                    <td scope="row" class="table__field table__text-body center">
-                            04/02/2020
-                    </td>
-                    <td class="table__field right flex">
-                            <span class="table__text-body--bold">Descargar</span>
-                            <img class="download-image" src="../../assets/icons/download.svg" alt="download">
-                    </td>
-                </tr>
+                <!-- <li v-for="pokemon in this.pokemons" :key="pokemon.id" @click="$emit('selection',pokemon.id)">{{pokemon.name}} </li> -->
             </tbody>
         </table>
     </div>
@@ -55,6 +47,17 @@
 
 export default {
   name: "TableComponent",
+  data() {
+    return {
+      reports: [
+          {id: "00001" , title: "Reporte de usuario 1", initDate : "04/02/2020" , endDate : "10/02/2020"},
+          {id: "00002" , title: "Reporte de usuario 2", initDate : "19/04/2020" , endDate : "11/12/2020"},
+          {id: "00003" , title: "Reporte de usuario 3", initDate : "22/06/2021" , endDate : "12/04/2021"},
+          {id: "00004" , title: "Reporte de usuario 4", initDate : "01/03/2021" , endDate : "13/09/2022"},
+          {id: "00005" , title: "Reporte de usuario 5", initDate : "27/08/2022" , endDate : "14/11/2023"},
+      ],
+    }
+  },
 };
 </script>
 
@@ -69,7 +72,7 @@ export default {
 
     .table__container {
        padding: 0rem 2rem 2rem;
-        margin-top: 5rem;
+        margin-top: 3.75rem;
         border-radius: 10px;
         background-color: #4562E6;
         width: 43.125rem;
@@ -130,7 +133,7 @@ export default {
             text-align: end;
     display: flex;
     justify-content: flex-end;
-    align-items: center;
+        align-items: end;
     }
   .right {
       text-align: end;
