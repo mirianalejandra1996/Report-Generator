@@ -3,9 +3,9 @@
     <h1 class="title">Generador de reportes TK</h1>
     <Table/>
     <Button  @click="toggleModal" />
-      <div @click="toggleModal" class="modal__container" :class="!isModalOpen && 'visible'">
+      <div @click="toggleModal" class="modal__container" :class="isModalOpen && 'visible'">
       </div>
-        <div class="modal" :class="isModalOpen ? 'close' : '' ">
+        <div class="modal" :class="!isModalOpen && 'close'">
           <h1 class="modal__title">Reporte por fecha de nacimiento</h1>
           <h1 class="modal__subtitle">Ingresa los siguientes datos para generar tu reporte</h1>
         </div>
