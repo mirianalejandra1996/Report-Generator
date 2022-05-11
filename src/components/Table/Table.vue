@@ -10,8 +10,7 @@
                 </tr>
             </thead>
             <tbody class="table__body">
-<!-- date title -->
-                <Row v-for="report in reports" :key="report.id" :date="report.initDate" :title="report.title"/>
+                <Row v-for="report in reports" :key="report.id" :date="report.birth_date" :title="report.title"/>
             </tbody>
         </table>
     </div>
@@ -25,11 +24,11 @@ export default {
   data() {
     return {
       reports: [
-          {id: "00001" , title: "Reporte de usuario 1", initDate : "04/02/2020" , endDate : "10/02/2020"},
-          {id: "00002" , title: "Reporte de usuario 2", initDate : "19/04/2020" , endDate : "11/12/2020"},
-          {id: "00003" , title: "Reporte de usuario 3", initDate : "22/06/2021" , endDate : "12/04/2021"},
-        //   {id: "00004" , title: "Reporte de usuario 4", initDate : "01/03/2021" , endDate : "13/09/2022"},
-        //   {id: "00005" , title: "Reporte de usuario 5", initDate : "27/08/2022" , endDate : "14/11/2023"},
+          {id: "00001" , title: "Reporte de usuario 1", birth_date : "04/02/2020" , end_date : "10/02/2020"},
+          {id: "00002" , title: "Reporte de usuario 2", birth_date : "19/04/2020" , end_date : "11/12/2020"},
+          {id: "00003" , title: "Reporte de usuario 3", birth_date : "22/06/2021" , end_date : "12/04/2021"},
+        //   {id: "00004" , title: "Reporte de usuario 4", birth_date : "01/03/2021" , end_date : "13/09/2022"},
+        //   {id: "00005" , title: "Reporte de usuario 5", birth_date : "27/08/2022" , end_date : "14/11/2023"},
       ],
     }
   },
