@@ -10,40 +10,15 @@
                 </tr>
             </thead>
             <tbody class="table__body">
-                <!-- <tr>
-                    <td scope="row" class="table__field table__text-body--small left">
-                            Reporte de usuario 1
-                    </td>
-                    <td scope="row" class="table__field table__text-body center">
-                            04/02/2020
-                    </td>
-                    <td class="table__field right flex">
-                            <span class="table__text-body--bold">Descargar</span>
-                            <img class="download-image" src="../../assets/icons/download.svg" alt="download">
-                    </td>
-                </tr> -->
-                <!-- <tr v-for="report in this.reports"> -->
-                <tr v-for="report in reports" :key="report.id">
-                    <td scope="row" class="table__field table__text-body--small left">
-                            {{report.title}}
-                            <!-- Reporte de usuario 1 -->
-                    </td>
-                    <td scope="row" class="table__field table__text-body center">
-                            {{report.initDate}}
-                            <!-- 04/02/2020 -->
-                    </td>
-                    <td class="table__field right flex">
-                            <span class="table__text-body--bold">Descargar</span>
-                            <img class="download-image" src="../../assets/icons/download.svg" alt="download">
-                    </td>
-                </tr>
-                <!-- <li v-for="pokemon in this.pokemons" :key="pokemon.id" @click="$emit('selection',pokemon.id)">{{pokemon.name}} </li> -->
+<!-- date title -->
+                <Row v-for="report in reports" :key="report.id" :date="report.initDate" :title="report.title"/>
             </tbody>
         </table>
     </div>
 </template>
 
 <script>
+import Row from './Row/Row';
 
 export default {
   name: "TableComponent",
@@ -58,6 +33,10 @@ export default {
       ],
     }
   },
+  components: {
+    Row,
+
+  }
 };
 </script>
 
@@ -65,9 +44,9 @@ export default {
 
     @import "@/scss/abstracts/variables.scss";
     
-    .download-image{
-        width: 1.25rem;
-        margin-left: 0.3rem;
+    th {
+    // td, th {
+        padding: 1rem 0;
     }
 
     .table__container {
@@ -92,50 +71,13 @@ export default {
 
   }
   
-    td, th {
-        padding: 1rem 0;
-    }
+  .table__text-header {
+    font-size: $fontSizeNormal;
+    color: $white;
+    font-weight: 400;
+}
 
-    .table__field {
-    border: 0;
-    // height: 66px;
-    position: relative;
-    }
-   
-    // ! Removing last vertical line
-    tr .table__field:not(:last-child)::after {
-       content: '';
-    background-color: #C4C4C4;
-    width: 4px;
-    height: 45%;
-    position: absolute;
-    right: 0;
-    top: calc(50% - 0.7rem);
-    }
-    
-    tr + tr { 
-        border-top: 1px solid $gray;
-        border-bottom: 1px solid $gray;
-    }
-
-    .table__body tr:last-of-type {
-        // background: blue
-        border-bottom: none;
-    }
-
-    .table__body tr:first-of-type {
-        // background: blue
-        border-top: none;
-    }
-
-
-    .flex {
-            text-align: end;
-    display: flex;
-    justify-content: flex-end;
-        align-items: end;
-    }
-  .right {
+ .right {
       text-align: end;
   }
 
@@ -146,30 +88,5 @@ export default {
   .left {
       text-align: start;
   }
-
-    
-.table__text-header {
-    font-size: $fontSizeNormal;
-    color: $white;
-    font-weight: 400;
-}
-
-.table__text-body{
-    font-size: $fontSizeNormal;
-    color: $white;
-    font-weight: 400;
-}
-
-.table__text-body--small{
-    font-size: $fontSizeSmall;
-    color: $white;
-    font-weight: 400;
-}
-
-.table__text-body--bold{
-    font-size: $fontSizeNormal;
-    color: $white;
-    font-weight: 700;
-}
 
 </style>
