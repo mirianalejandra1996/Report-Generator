@@ -2,10 +2,8 @@
   <tr>
     <td scope="row" class="table__field table__text-body--small left">
             {{title}}
-            <!-- {{report.title}} -->
     </td>
     <td scope="row" class="table__field table__text-body center">
-            <!-- {{report.initDate}} -->
             {{date}}
     </td>
     <td class="table__field right flex">
@@ -60,22 +58,28 @@ export default {
     }
 
     .table__body tr:last-of-type {
-        // background: blue
         border-bottom: none;
     }
 
     .table__body tr:first-of-type {
-        // background: blue
         border-top: none;
     }
 
 
     .flex {
-            text-align: end;
-    display: flex;
-    justify-content: flex-end;
+        text-align: end;
+        display: flex;
+        justify-content: flex-end;
         align-items: end;
+        cursor: pointer;
+        transition: .1s ease-in-out;
     }
+
+    .flex:hover {
+        background-color: #3a56d1;
+        transition: .2s ease-in-out;
+    }
+
   .right {
       text-align: end;
   }
