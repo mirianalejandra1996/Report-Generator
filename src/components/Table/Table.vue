@@ -6,9 +6,7 @@
             <thead class="table__header">
                 <tr>
                     <th class="table__text-header left">Título</th>
-                    <!-- <th class="table__text-header left"></th> -->
                     <th class="table__text-header center">Fecha de creación</th>
-                    <!-- <th class="table__text-header right"></th> -->
                     <th class="table__text-header right">Acción</th>
                 </tr>
             </thead>
@@ -19,13 +17,11 @@
                             Reporte de usuario 1
                         </div>
                     </td>
-                    <!-- <td class="table__text-body--bold right"><span class="vertical-line"> </span></td> -->
                     <td scope="row" class="table__text-body center">
                         <div class="table__field center">
                             04/02/2020
                         </div>
                     </td>
-                    <!-- <td class="table__text-body--bold right"><span class="vertical-line"> </span></td> -->
                     <td class="table__text-body--bold right">
                         <div class="table__field right">
                             Descargar
@@ -72,7 +68,6 @@ export default {
   
     td, th {
         padding: 1rem 0;
-        
     }
 
     .table__field {
@@ -80,23 +75,9 @@ export default {
     justify-content: space-between;
     border: 0;
     height: 66px;
-    // background: aqua;
-
     }
 
-    // .table__field::after {
-        //     content: '';
-    // display: inline-block;
-    // background-color: $gray;
-    // width: 5px;
-    // height: 90%;
-     
-    // }
-
-    // .table__field::before + .table__field::before {
-        // .table__field + .table__field::after {
-        .table__field::after {
-
+    .table__field::after {
         content: '';
     display: inline-block;
     background-color: $gray;
@@ -105,10 +86,10 @@ export default {
      
     }
 
-    // .table__field:last-child::after  { 
-    //     content: ".";
-    //     background-color: blue;
-    // }
+// Removing last vertical line
+tr td:last-of-type .table__field::after{
+    content: none;
+}
     
   .right {
       text-align: end;
