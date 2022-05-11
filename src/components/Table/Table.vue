@@ -28,8 +28,8 @@ export default {
           {id: "00001" , title: "Reporte de usuario 1", initDate : "04/02/2020" , endDate : "10/02/2020"},
           {id: "00002" , title: "Reporte de usuario 2", initDate : "19/04/2020" , endDate : "11/12/2020"},
           {id: "00003" , title: "Reporte de usuario 3", initDate : "22/06/2021" , endDate : "12/04/2021"},
-          {id: "00004" , title: "Reporte de usuario 4", initDate : "01/03/2021" , endDate : "13/09/2022"},
-          {id: "00005" , title: "Reporte de usuario 5", initDate : "27/08/2022" , endDate : "14/11/2023"},
+        //   {id: "00004" , title: "Reporte de usuario 4", initDate : "01/03/2021" , endDate : "13/09/2022"},
+        //   {id: "00005" , title: "Reporte de usuario 5", initDate : "27/08/2022" , endDate : "14/11/2023"},
       ],
     }
   },
