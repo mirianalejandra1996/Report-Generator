@@ -6,26 +6,32 @@
             <thead class="table__header">
                 <tr>
                     <th class="table__text-header left">Título</th>
+                    <!-- <th class="table__text-header left"></th> -->
                     <th class="table__text-header center">Fecha de creación</th>
+                    <!-- <th class="table__text-header right"></th> -->
                     <th class="table__text-header right">Acción</th>
-                    <!-- <th class="table__text-header right" scope="col">Acción</th> -->
-                    <!-- <th class="left">Titulo</th>
-                    <th class="center">Fecha de creación</th>
-                    <th scope="col" class="right">Acción</th> -->
                 </tr>
             </thead>
             <tbody class="table__body">
                 <tr>
-                    <td scope="row" class="table__text-body--small left">Reporte de usuario 1</td>
-                    <td scope="row" class="table__text-body center">04/02/2020</td>
-                    <td class="table__text-body--bold right">Descargar</td>
+                    <td scope="row" class="table__text-body--small left">
+                        <div class="table__field left">
+                            Reporte de usuario 1
+                        </div>
+                    </td>
+                    <!-- <td class="table__text-body--bold right"><span class="vertical-line"> </span></td> -->
+                    <td scope="row" class="table__text-body center">
+                        <div class="table__field center">
+                            04/02/2020
+                        </div>
+                    </td>
+                    <!-- <td class="table__text-body--bold right"><span class="vertical-line"> </span></td> -->
+                    <td class="table__text-body--bold right">
+                        <div class="table__field right">
+                            Descargar
+                        </div>
+                    </td>
                 </tr>
-                <tr>
-                    <td scope="row" class="table__text-body--small left">Reporte de usuario 1</td>
-                    <td scope="row" class="table__text-body center">04/02/2020</td>
-                    <td class="table__text-body--bold right">Descargar</td>
-                </tr>
-               
             </tbody>
         </table>
     </div>
@@ -66,23 +72,44 @@ export default {
   
     td, th {
         padding: 1rem 0;
+        
     }
 
-    tr { 
-        border: 1px solid $gray;
+    .table__field {
+    display: flex;
+    justify-content: space-between;
+    border: 0;
+    height: 66px;
+    // background: aqua;
+
     }
 
-// ! Experimento
-// border-right: 1px solid;
-// line-height: 10px;
-    td + td { 
-        border-left:4px solid $gray; 
-        border-right: 4px solid $gray;
-    }
-        // td + td { 
-        //     border-left:4px solid $gray; 
-        // }
+    // .table__field::after {
+        //     content: '';
+    // display: inline-block;
+    // background-color: $gray;
+    // width: 5px;
+    // height: 90%;
+     
+    // }
 
+    // .table__field::before + .table__field::before {
+        // .table__field + .table__field::after {
+        .table__field::after {
+
+        content: '';
+    display: inline-block;
+    background-color: $gray;
+    width: 5px;
+    height: 90%;
+     
+    }
+
+    // .table__field:last-child::after  { 
+    //     content: ".";
+    //     background-color: blue;
+    // }
+    
   .right {
       text-align: end;
   }
