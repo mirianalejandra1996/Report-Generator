@@ -1,8 +1,7 @@
 <template>
 
     <div class="table__container">
-    <!-- <table class="table"> -->
-        <table class="table" border=1 frame=void rules=rows>
+            <table class="table">
             <thead class="table__header">
                 <tr>
                     <th class="table__text-header left">Título</th>
@@ -12,20 +11,39 @@
             </thead>
             <tbody class="table__body">
                 <tr>
-                    <td scope="row" class="table__text-body--small left">
-                        <div class="table__field left">
+                    <td scope="row" class="table__field table__text-body--small left">
                             Reporte de usuario 1
-                        </div>
                     </td>
-                    <td scope="row" class="table__text-body center">
-                        <div class="table__field center">
+                    <td scope="row" class="table__field table__text-body center">
                             04/02/2020
-                        </div>
                     </td>
-                    <td class="table__text-body--bold right">
-                        <div class="table__field right">
-                            Descargar
-                        </div>
+                    <td class="table__field right flex">
+                            <span class="table__text-body--bold">Descargar</span>
+                            <img class="download-image" src="../../assets/icons/download.svg" alt="download">
+                    </td>
+                </tr>
+                <tr>
+                    <td scope="row" class="table__field table__text-body--small left">
+                            Reporte de usuario 1
+                    </td>
+                    <td scope="row" class="table__field table__text-body center">
+                            04/02/2020
+                    </td>
+                    <td class="table__field right flex">
+                            <span class="table__text-body--bold">Descargar</span>
+                            <img class="download-image" src="../../assets/icons/download.svg" alt="download">
+                    </td>
+                </tr>
+                <tr>
+                    <td scope="row" class="table__field table__text-body--small left">
+                            Reporte de usuario 1
+                    </td>
+                    <td scope="row" class="table__field table__text-body center">
+                            04/02/2020
+                    </td>
+                    <td class="table__field right flex">
+                            <span class="table__text-body--bold">Descargar</span>
+                            <img class="download-image" src="../../assets/icons/download.svg" alt="download">
                     </td>
                 </tr>
             </tbody>
@@ -43,13 +61,18 @@ export default {
 <style lang="scss" scoped>
 
     @import "@/scss/abstracts/variables.scss";
+    
+    .download-image{
+        width: 1.25rem;
+        margin-left: 0.3rem;
+    }
 
     .table__container {
-        padding: 0rem 2rem 2rem;
+       padding: 0rem 2rem 2rem;
         margin-top: 5rem;
         border-radius: 10px;
         background-color: #4562E6;
-        width: 55rem;
+        width: 43.125rem;
     }
 
   .table {
@@ -71,30 +94,44 @@ export default {
     }
 
     .table__field {
-    display: flex;
-    justify-content: space-between;
     border: 0;
-    height: 66px;
+    // height: 66px;
+    position: relative;
     }
-
-    .table__field::after {
-        content: '';
-    display: inline-block;
-    background-color: $gray;
-    width: 5px;
-    height: 80%;
-     
-    }
-
-        // Removing last vertical line
-    td .table__field:not(:last-child)::after {
-        content: '';
-        display: inline-block;
-        background-color: $gray;
-        width: 5px;
-        height: 80%;
+   
+    // ! Removing last vertical line
+    tr .table__field:not(:last-child)::after {
+       content: '';
+    background-color: #C4C4C4;
+    width: 4px;
+    height: 45%;
+    position: absolute;
+    right: 0;
+    top: calc(50% - 0.7rem);
     }
     
+    tr + tr { 
+        border-top: 1px solid $gray;
+        border-bottom: 1px solid $gray;
+    }
+
+    .table__body tr:last-of-type {
+        // background: blue
+        border-bottom: none;
+    }
+
+    .table__body tr:first-of-type {
+        // background: blue
+        border-top: none;
+    }
+
+
+    .flex {
+            text-align: end;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    }
   .right {
       text-align: end;
   }
@@ -110,28 +147,24 @@ export default {
     
 .table__text-header {
     font-size: $fontSizeNormal;
-    font-size: 1.2rem;
     color: $white;
     font-weight: 400;
 }
 
 .table__text-body{
     font-size: $fontSizeNormal;
-    font-size: 1.2rem;
     color: $white;
     font-weight: 400;
 }
 
 .table__text-body--small{
-    font-size: $fontSizeNormal;
-    font-size: 1rem;
+    font-size: $fontSizeSmall;
     color: $white;
     font-weight: 400;
 }
 
 .table__text-body--bold{
     font-size: $fontSizeNormal;
-    font-size: 1.2rem;
     color: $white;
     font-weight: 700;
 }
