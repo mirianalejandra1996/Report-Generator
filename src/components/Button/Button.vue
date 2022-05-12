@@ -1,17 +1,30 @@
 <template>
-  <button class="button"><span class="button__text">Crear Reporte</span></button>
+  <button :class="['button', isBigger && 'bigger', isDisabled && 'disabled']"><span class="button__text">{{text}}</span></button>
 </template>
 
 <script>
 export default {
     name: "ButtonComponent",
+    props: {
+      text: {
+        type: String,
+        required: true,
+      },
+      isBigger: {
+        type: Boolean,
+        default: false,
+      },
+      isDisabled: {
+        type: Boolean,
+        default: false,
+      }
+    }
 }
 </script>
 
 <style lang="scss" scoped>
     @import "@/scss/abstracts/variables.scss";
 
-    
     .button{
     background: $yellow;
     margin-top: 1.875rem;
@@ -31,6 +44,20 @@ export default {
   .button:hover{
     background: #e6ac0c;
     transition: .2s ease-in-out;
+  }
+
+  .bigger{
+    width: 13.875rem;
+    height: 3.438rem;
+  }
+
+  .disabled{
+      background-color: $mediumGray;
+   }
+
+   .button.disabled:hover{
+    background-color: $mediumGray;
+    cursor: no-drop;
   }
 
   .button__text{

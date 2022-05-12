@@ -1,6 +1,6 @@
 <template>
     <nav class="navbar__container">
-        <img src="../../assets/icons/logo.png" alt="logo">
+        <img src="../../assets/icons/logo.svg" alt="logo">
     </nav>
 </template>
 
