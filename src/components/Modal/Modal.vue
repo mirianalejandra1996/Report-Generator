@@ -40,11 +40,6 @@ export default {
         type: Boolean,
         default: false,
       },
-      prueba: {
-          type: String,
-          required: true,
-      }
-    
     },
 }
 </script>
