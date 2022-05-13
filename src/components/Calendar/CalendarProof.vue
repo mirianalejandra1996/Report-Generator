@@ -16,7 +16,7 @@
 import moment from "moment"
 
 export default {
-  name: "TableComponent",
+  name: "TableProofComponent",
   data() {
     return {
       fecha: null,
