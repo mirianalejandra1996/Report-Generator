@@ -1,123 +1,184 @@
-<template>
-  <h1>Calendar</h1>
-  <h1>{{startDay.format("DD/MM")}} - {{endDay.format("DD/MM")}}</h1>
-  <h1>day: {{day.format("DD/MM")}}</h1>
-
-<div class="calendar">
-  <!-- <ol class="calendar__header">
-    <li  v-for="(nameDay, index) in daysName" :key="index">{{nameDay}}</li>
-  </ol> -->
-  <div class="calendar__header">
-    <div  v-for="(nameDay, index) in daysName" :key="index">{{nameDay}}</div>
-  </div>
-  <div class="calendar__body">
-    <div  v-for="(week, index) in calendar" :key="index">
-      <h4 class="calendar__day" v-for="(day, index) in week" :key="index">{{day.format("D").toString()}}</h4>
-    </div>
-</div>
-</div>
+ <template>
+    <Datepicker v-model="date"></Datepicker>
+    <!-- <Datepicker v-model="date"></Datepicker> -->
 </template>
 
 <script>
-import moment from "moment"
-
-export default {
-  name: "TableProofComponent",
-  data() {
-    return {
-      fecha: null,
-      daysName: ['S','M','T','W','T','F','S'],
-      startDay: null,
-      endDay: null,
-      day: null,
-      calendar: null,
-    }
-  },
-  methods: {
-    getDate(){
-       const value = moment();
-
-       const startDay = value.clone().startOf("month").startOf("week");
-       const endDay = value.clone().endOf("month").endOf("week");
-
-        this.startDay = startDay;
-        this.endDay = endDay;
-
-       const day = startDay.clone().subtract(1, "day")
-
-       this.day = day
-
-       const calendar = []
-
-      //  The algorithm
-
-      while(day.isBefore(endDay,"day")){
-        // Our calendar is a matrix --> An array of arrays
-        calendar.push(
-          // we have to clone it to have a new instance of the next day
-          Array(7).fill(0).map(() => day.add(1,"day").clone())
-        )
-      }
-
-      // Each iteration is gonna giving us the week
-      this.calendar = calendar
-
-    }
-  },
-  created() {
-    console.log('creado calendar')
-
-   this.getDate()
-
+    import Datepicker from '@vuepic/vue-datepicker';
+    // import '@vuepic/vue-datepicker/dist/main.css'
+  
     
-  },
-
-};
+    export default {
+        name: "CalendarComponent",
+        components: { Datepicker },
+        data() {
+            return {
+                date: null,
+            };
+        }
+    }
 </script>
+ 
+<!-- <style scoped> -->
+<style >
+    /* @import '@vuepic/vue-datepicker/src/VueDatePicker/style/main.scss'; */
+  @import '@vuepic/vue-datepicker/dist/main.css';
 
-<style lang="scss" scoped>
 
-    @import "@/scss/abstracts/variables.scss";
+/* Clock button */
+.dp__button{
+    display: none;
+}
 
-    .calendar {
-      // display: grid;
-      // grid-template-columns: repeat(7,1fr);
-          width: 400px;
-    min-height: 400px;
-    height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    border-radius: 10px;
-    border: 1px solid blue;
+/* Days of others months (not current) */
+.dp__calendar_header{
+    color: #757575;
+    font-weight: 400;
+    margin-top: 7px;
+}
+
+/* Header Calendar Days */
+.dp__calendar_header_item {
+    display:block;
+    visibility:hidden;
+    padding-left: 12px;
+}
+
+.dp__calendar_header_item:first-letter {
+    visibility:visible;
+}
+
+/* Calendar Icon container */
+    .dp__input_icons{
+        /* background: gray; */
+        width: auto;
+            height: 25px;
+        
     }
 
-    .calendar__header{
-          // display: flex;
+/* .dp__input_wrap > .dp__input_icon:first-of-type{ */
+/* .dp__input_wrap > svg:last-of-type{ */
+.dp__input_wrap > .dp__input_icon:last-of-type{
+    /* position: absolute; */
+    /* left: 0 !important; */
+    /* right: auto !important; */
+    background: orange;
+
+}
+
+    /* ---------------------- */
+        /* Calendar Icon */
+/* .dp__input_icon:first-of-type{ */
+.dp__input_wrap > .dp__input_icon:first-of-type{
+/* .dp__input_wrap > svg:first-of-type{ */
+    position: absolute;
+    left: auto !important;
+    right: 0 !important;
+    /* background: blue; */
+
+}
+
+
+
+/* .dp__input_icon:last-of-type{
+    position: absolute;
+    right: auto !important;
+    left: 0 !important;
+} */
+
+.dp__arrow_top{
+    display: none;
+}
+
+.dp__main{
+    width: 260px;
+    height: 3.2rem;
+}
+
+.dp__main > div {
+    height: 100%;
+}
+
+
+/* Input */
+.dp__input_wrap{
     width: 100%;
-    justify-content: space-between;
-    border: 1px solid orange;
-        display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    }
+    height: 4rem;
+}
 
-    .calendar__body {
-      position: relative;
+.dp__input{
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid gray;
-      // -------------
-      display: grid;
-      grid-template-columns: repeat(7,1fr);
-    }
+    font-weight: 400;
+    color: #565656;
+    font-size: 0.8rem;
+    padding: 10px 15px;
+}
 
-    .calendar__day{
-      border: 1px solid green;
-    }
-    
+.dp__month_year_row{
+    padding-left: 10px;
+    font-size: .9rem;
+    font-weight: 600;
+    color: #181818;
+    padding-top: 0.2rem;
+}
+
+/* Arrow left container*/
+.dp__month_year_col_nav:first-of-type{
+    position: absolute;
+    right: 45px;
+}
+
+/* Arrow right container*/
+.dp__month_year_col_nav:last-of-type{
+    position: absolute;
+    right: 5px;
+}
+
+/* Arrow icons */
+.dp__inner_nav svg {
+    /* height: 20px; */
+    width: 15px;
+}
+
+
+/* Month and year container */
+.dp__month_year_select{
+    width: auto;
+    margin-left: 0.5rem;
+}
+
+/* Each cell of the days */
+.dp__cell_inner{
+    border-radius: 50%;
+}
+
+.dp__action_row{
+    justify-content: end;
+}
+
+/* Date resume footer calendar */
+.dp__selection_preview{
+    display: none;
+}
+
+/* Days that belongs to other month */
+.dp__cell_offset{
+    color: #fff;
+}
+
+/* Underline of header's calendar */
+.dp__calendar_header_separator{
+    background: #fff;
+}
+
+/* Calendar container */
+.dp__calendar_wrap{
+    font-size: .8rem;
+}
+
+.dp__theme_light {
+  --dp-menu-border-color: #fff;
+  --dp-success-color: #4562e6;
+}
 </style>
