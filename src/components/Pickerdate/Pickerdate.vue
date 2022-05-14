@@ -18,7 +18,7 @@
                 required: true,
             },
             dateValue : {
-                type: Date,
+                type: [Object, String],
             }
         },
          methods: {

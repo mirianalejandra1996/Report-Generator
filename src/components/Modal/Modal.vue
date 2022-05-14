@@ -5,7 +5,8 @@
           <h1 class="modal__title">Reporte por fecha de nacimiento</h1>
           <h1 class="modal__subtitle">Ingresa los siguientes datos para generar tu reporte</h1>
 
-          <form class="form">
+          <!-- <form class="form" @submit="handleSubmit"> -->
+          <form class="form" @submit.prevent="handleSubmit">
             <!-- First row -->
             <div class="form__input-box">
               <label class="form__input-label--upper">Descripción del reporte</label>
@@ -18,12 +19,13 @@
               <Pickerdate label="Fin" v-model="formValues.endDate" :dateValue="formValues.endDate"/>
             </div>
               <div class="form__button-container">
-                <Button :isDisabled="true" :isBigger="true" text="Generar Reporte"/>
-              <div>
+                <div class="form__err-container"><span v-if="errorMsg">{{errorMsg}}</span></div>
+                <Button :isDisabled="isDisabled" :isBigger="true" text="Generar Reporte"/>
+              <!-- <div>
                 <pre>
                   {{JSON.stringify(formValues, null,2)}}
                 </pre>
-              </div>
+              </div> -->
               </div>
           </form>
         </div>
@@ -36,6 +38,7 @@ import Pickerdate from '../Pickerdate/Pickerdate'
 
 export default {
     name: 'ModalComponent',
+    
     data(){
       return {
         formValues: {
@@ -43,18 +46,68 @@ export default {
           initDate: '',
           endDate: '',
         },
+        errorMsg: '',
+        // isDisabled: true,
+        isDisabled: false,
       }
-    },
-      props: {
-      isModalOpen: {
-        type: Boolean,
-        default: false,
-      },
     },
     components: {
       Pickerdate,
       Button,
     },
+    props: {
+      isModalOpen: {
+        type: Boolean,
+        default: false,
+      },
+    },
+    watch: {
+      formValues : function (oldData, newData ) {
+
+        // this.formValues = newData;
+        this.formValues = newData;
+        console.log('cambiooo')
+        return 'siiii'
+      },
+    },
+    computed() {
+          console.log('computed??')
+    },
+    methods: {
+      handleSubmit(){
+        console.log('handleSubmit!!')
+        this. errorMsg = ""
+        // this.isDisabled = true
+    // ! Control empty fields
+        if (!this.formValues.reportDescription || !this.formValues.initDate || !this.formValues.endDate){
+          this. errorMsg = "Campos deben ser rellenados"
+          return 
+        }
+
+      // ! Only accept letters and spaces
+        var expression = /^[a-zA-Z\s]*$/;
+
+        if(!expression.test(this.formValues.reportDescription)){ //
+            this. errorMsg = "Solo ingresar letras"
+            return 
+        }
+
+        const birthDate = new Date(this.formValues.initDate).getTime()
+        const endDate = new Date(this.formValues.endDate).getTime()
+        if(birthDate === endDate){
+          console.log('son la misma fecha')
+          this. errorMsg = "Debe ingresar fechas diferentes"
+          return
+        }
+
+        if(birthDate > endDate){
+          this. errorMsg = "Fecha de inicio debe ser antes que fecha fin"
+          return
+        }
+          this. errorMsg = "";
+          // this.isDisabled = false;
+      }
+    }
 }
 </script>
 
@@ -138,10 +191,21 @@ export default {
     width: 50%;
   }
 
+.form__err-container {
+    height: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 0.8rem;
+    margin-bottom: 0.5rem;
+    color: #e53935;
+  }
+
   .form__button-container{
-        width: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 
 .modal__container{
@@ -162,7 +226,7 @@ export default {
 
 .modal{
     width: 37.438rem;
-    height: 26.438rem;
+    height: 28rem;
     background: #FFF;
     border-radius: 10px;
     display: flex;

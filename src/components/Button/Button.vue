@@ -49,6 +49,7 @@ export default {
   .bigger{
     width: 13.875rem;
     height: 3.438rem;
+    margin-top: 0.5rem;
   }
 
   .disabled{
@@ -67,5 +68,5 @@ export default {
     font-family: 'ArgentumSans', sans-serif;
     margin-bottom: 0.3rem;
   }
-
+  
 </style>
