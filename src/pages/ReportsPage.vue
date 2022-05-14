@@ -12,7 +12,6 @@ import Table from '@/components/Table/Table';
 import Button from '@/components/Button/Button';
 import Modal from '@/components/Modal/Modal';
 
-
 export default {
   name: "reportsPage",
   data(){
