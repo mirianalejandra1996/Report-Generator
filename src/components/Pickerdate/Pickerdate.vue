@@ -1,13 +1,21 @@
  <template>
     <div class="form__input-box">
         <label class="form__input-label">{{label}}</label>
-        <Datepicker v-model="date" :format="format" />
+      <!-- <Datepicker 
+            v-bind="{
+            ...$attrs,
+            onChange: (event) => $emit('update:dateValue', event.target.value)}"
+            :value="dateValue"
+        />  -->
+
+        <Datepicker :format="format" v-bind="$attrs" @change="$emit('update:dateValue', event.target.value)"  :value="dateValue"/>
+       
     </div>
 </template>
 
 <script>
     import Datepicker from '@vuepic/vue-datepicker';
-    import { ref } from 'vue';
+   
 
     export default {
         name: "CalendarComponent",
@@ -17,22 +25,37 @@
                 type: String,
                 required: true,
             },
+            dateValue : {
+                type: Date,
+            }
         },
-        setup() {
-        const date = ref(new Date());
-        const format = (date) => {
-            const day = date.getDate();
-            const month = date.getMonth() + 1;
-            const year = date.getFullYear();
+         methods: {
+            changeUsername() {
+                this.$emit('modelValue')
+            }
+        },
+        // setup() {
+        //     const test = 'hola';
+        //     const date = ref(new Date());
+        //     const format = (date) => {
+        //         const day = date.getDate();
+        //         const month = date.getMonth() + 1;
+        //         const year = date.getFullYear();
 
-            return `${day}/${month}/${year}`;
+        //         return `${day}/${month}/${year}`;
+        //     }
+        //     console.log('props', this);
+        //     console.log('date', date);
+        //     console.log('fecha', test);
+
+        //     return {
+        //         date,
+        //         format,
+        //     }
+        // },
+        mounted () {
+            console.log('tombola', this.modelValue)
         }
-        
-        return {
-            date,
-            format,
-        }
-    }
     }
 </script>
  

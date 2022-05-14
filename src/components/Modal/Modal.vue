@@ -9,28 +9,43 @@
             <!-- First row -->
             <div class="form__input-box">
               <label class="form__input-label--upper">Descripción del reporte</label>
-              <input type="text" class="form__input" />
+              <input type="text" class="form__input" v-model="formValues.reportDescription" />
             </div>
             <!-- 2 inputs in a row -->
             <h3 class="form__title">Fecha de nacimiento</h3>
             <div class="form__flex-container">
-              <Pickerdate label="Inicio"/>
-              <Pickerdate label="Fin"/>
+              <Pickerdate label="Prueba" v-model="formValues.initDate" :dateValue="formValues.initDate"/>
+
             </div>
               <div class="form__button-container">
                 <Button :isDisabled="true" :isBigger="true" text="Generar Reporte"/>
+              <div>
+                <pre>
+                  {{JSON.stringify(formValues, null,2)}}
+                </pre>
+              </div>
               </div>
           </form>
         </div>
 </template>
 
 <script>
+ import { ref } from 'vue';
 import Button from '../Button/Button'
 import Pickerdate from '../Pickerdate/Pickerdate'
 
 
 export default {
     name: 'ModalComponent',
+    data(){
+      return {
+        formValues: {
+          reportDescription: '',
+          initDate: '',
+          endDate: '',
+        },
+      }
+    },
       props: {
       isModalOpen: {
         type: Boolean,
@@ -40,7 +55,26 @@ export default {
     components: {
       Pickerdate,
       Button,
-    }
+    },
+    setup() {
+            const test = 'hola';
+            const date = ref(new Date());
+            const format = (date) => {
+                const day = date.getDate();
+                const month = date.getMonth() + 1;
+                const year = date.getFullYear();
+
+                return `${day}/${month}/${year}`;
+            }
+            console.log('props', this);
+            console.log('date', date);
+            console.log('fecha', test);
+
+            return {
+                date,
+                format,
+            }
+        },
 }
 </script>
 
