@@ -19,9 +19,7 @@
     }
 </script>
  
-<!-- <style scoped> -->
 <style >
-    /* @import '@vuepic/vue-datepicker/src/VueDatePicker/style/main.scss'; */
   @import '@vuepic/vue-datepicker/dist/main.css';
 
 
@@ -53,6 +51,7 @@
         /* background: gray; */
         width: auto;
             height: 25px;
+            color: #707070;
         
     }
 
@@ -62,7 +61,8 @@
     /* position: absolute; */
     /* left: 0 !important; */
     /* right: auto !important; */
-    background: orange;
+    /* background: orange; */
+    /* background: #fff; */
 
 }
 
