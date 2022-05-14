@@ -1,5 +1,8 @@
  <template>
-    <Datepicker v-model="date" :format="format" />
+    <div class="form__input-box">
+        <label class="form__input-label">Fin</label>
+        <Datepicker v-model="date" :format="format" />
+    </div>
 </template>
 
 <script>
@@ -9,6 +12,12 @@
     export default {
         name: "CalendarComponent",
         components: { Datepicker },
+        props: {
+            label: {
+                type: String,
+                required: true,
+            },
+        },
         setup() {
         const date = ref(new Date());
         const format = (date) => {
@@ -30,6 +39,30 @@
 <style >
   @import '@vuepic/vue-datepicker/dist/main.css';
 
+/* ------------------- */
+/* Input container */
+.form__input-box{
+    margin: 15px 0;
+    height: 3.438rem;
+    position: relative;
+    width: auto;
+}
+
+/* Label of input */
+.form__input-label {
+    background: #fff;
+    color: #565656;
+    font-size: .8rem;
+    font-weight: 300;
+    left: 6px;
+    margin-bottom: 5px;
+    padding: 3px;
+    position: absolute;
+    top: -14px;
+    z-index: 2;
+}
+
+/* ------------------- */
 
 /* Clock button */
 .dp__button{
@@ -46,8 +79,8 @@
 /* Header Calendar Days */
 .dp__calendar_header_item {
     display:block;
-    visibility:hidden;
     padding-left: 12px;
+    visibility:hidden;
 }
 
 /* First letter of each weekday, instead of Monday, is M */
@@ -57,24 +90,23 @@
 
 /* Calendar Icon container */
     .dp__input_icons{
-        width: auto;
-        height: 25px;
         color: #707070;
-        
+        height: 25px;
+        width: auto;
     }
 
 /* Calendar Icon */
 .dp__input_wrap > .dp__input_icon:first-of-type{
-    position: absolute;
     left: auto !important;
+    position: absolute;
     right: 0 !important;
 }
 
 /* X button is not visible */
 .dp__clear_icon{
-    right: auto !important;
-    left: 0 !important;
     display: none;
+    left: 0 !important;
+    right: auto !important;
 }
 
 .dp__arrow_top{
@@ -82,8 +114,8 @@
 }
 
 .dp__main{
-    width: 260px;
     height: 3.2rem;
+    width: 260px;
 }
 
 .dp__main > div {
@@ -92,25 +124,25 @@
 
 /* Input Container*/
 .dp__input_wrap{
-    width: 100%;
     height: 4rem;
+    width: 100%;
 }
 
 /* Input */
 .dp__input{
-    width: 100%;
-    height: 100%;
-    font-weight: 400;
     color: #565656;
     font-size: 0.8rem;
+    font-weight: 400;
+    height: 100%;
     padding: 10px 15px;
+    width: 100%;
 }
 
 .dp__month_year_row{
-    padding-left: 10px;
+    color: #181818;
     font-size: .9rem;
     font-weight: 600;
-    color: #181818;
+    padding-left: 10px;
     padding-top: 0.2rem;
 }
 
@@ -128,15 +160,14 @@
 
 /* Arrow icons */
 .dp__inner_nav svg {
-    /* height: 20px; */
     width: 15px;
 }
 
 
 /* Month and year container */
 .dp__month_year_select{
-    width: auto;
     margin-left: 0.5rem;
+    width: auto;
 }
 
 /* Each cell of the days */
@@ -170,7 +201,7 @@
 
 /* global colors of datepicker component */
 .dp__theme_light {
-    --dp-menu-border-color: #fff;
+  --dp-menu-border-color: #fff;
   --dp-success-color: #4562e6;
 }
 </style>
