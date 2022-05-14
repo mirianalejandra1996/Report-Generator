@@ -1,18 +1,29 @@
  <template>
-    <Datepicker value="si" v-model="date"></Datepicker>
+    <Datepicker v-model="date" :format="format" />
 </template>
 
 <script>
     import Datepicker from '@vuepic/vue-datepicker';
-    
+    import { ref } from 'vue';
+
     export default {
         name: "CalendarComponent",
         components: { Datepicker },
-        data() {
-            return {
-                date: null,
-            };
+        setup() {
+        const date = ref(new Date());
+        const format = (date) => {
+            const day = date.getDate();
+            const month = date.getMonth() + 1;
+            const year = date.getFullYear();
+
+            return `${day}/${month}/${year}`;
         }
+        
+        return {
+            date,
+            format,
+        }
+    }
     }
 </script>
  
