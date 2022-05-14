@@ -1,20 +1,35 @@
 <template>
   <div class="reports-page">
-    <h1>Generador de reportes TK</h1>
+    <h1 class="title">Generador de reportes TK</h1>
     <Table/>
-    <Button/>
+    <Button text="Crear Reporte" @click="toggleModal" />
+    <Modal :isModalOpen="isModalOpenP" @close-modal="toggleModal"/>
   </div>
 </template>
 
 <script>
 import Table from '@/components/Table/Table';
 import Button from '@/components/Button/Button';
+import Modal from '@/components/Modal/Modal';
+
 
 export default {
   name: "reportsPage",
+  data(){
+    return {
+      isModalOpenP : false,
+    }
+  },
   components: {
     Table,
     Button,
+    Modal,
+},
+  methods : {
+    toggleModal() {
+      console.log('open!',this.isModalOpenP)
+      this.isModalOpenP = !this.isModalOpenP
+    },
   },
 };
 </script>
@@ -22,6 +37,7 @@ export default {
 <style lang="scss" scoped>
     @import "@/scss/abstracts/variables.scss";
 
+// -----------------
   .reports-page{
         width: 100%;
     display: flex;
@@ -30,9 +46,7 @@ export default {
     min-height: 100vh;
   }
 
-  h1 {
+  .title {
     margin-top: 3.438rem;
   }
-
-
 </style>
