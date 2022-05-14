@@ -1,12 +1,9 @@
  <template>
-    <Datepicker v-model="date"></Datepicker>
-    <!-- <Datepicker v-model="date"></Datepicker> -->
+    <Datepicker value="si" v-model="date"></Datepicker>
 </template>
 
 <script>
     import Datepicker from '@vuepic/vue-datepicker';
-    // import '@vuepic/vue-datepicker/dist/main.css'
-  
     
     export default {
         name: "CalendarComponent",
@@ -42,49 +39,32 @@
     padding-left: 12px;
 }
 
+/* First letter of each weekday, instead of Monday, is M */
 .dp__calendar_header_item:first-letter {
     visibility:visible;
 }
 
 /* Calendar Icon container */
     .dp__input_icons{
-        /* background: gray; */
         width: auto;
-            height: 25px;
-            color: #707070;
+        height: 25px;
+        color: #707070;
         
     }
 
-/* .dp__input_wrap > .dp__input_icon:first-of-type{ */
-/* .dp__input_wrap > svg:last-of-type{ */
-.dp__input_wrap > .dp__input_icon:last-of-type{
-    /* position: absolute; */
-    /* left: 0 !important; */
-    /* right: auto !important; */
-    /* background: orange; */
-    /* background: #fff; */
-
-}
-
-    /* ---------------------- */
-        /* Calendar Icon */
-/* .dp__input_icon:first-of-type{ */
+/* Calendar Icon */
 .dp__input_wrap > .dp__input_icon:first-of-type{
-/* .dp__input_wrap > svg:first-of-type{ */
     position: absolute;
     left: auto !important;
     right: 0 !important;
-    /* background: blue; */
-
 }
 
-
-
-/* .dp__input_icon:last-of-type{
-    position: absolute;
+/* X button is not visible */
+.dp__clear_icon{
     right: auto !important;
     left: 0 !important;
-} */
+    display: none;
+}
 
 .dp__arrow_top{
     display: none;
@@ -99,13 +79,13 @@
     height: 100%;
 }
 
-
-/* Input */
+/* Input Container*/
 .dp__input_wrap{
     width: 100%;
     height: 4rem;
 }
 
+/* Input */
 .dp__input{
     width: 100%;
     height: 100%;
@@ -177,8 +157,9 @@
     font-size: .8rem;
 }
 
+/* global colors of datepicker component */
 .dp__theme_light {
-  --dp-menu-border-color: #fff;
+    --dp-menu-border-color: #fff;
   --dp-success-color: #4562e6;
 }
 </style>
