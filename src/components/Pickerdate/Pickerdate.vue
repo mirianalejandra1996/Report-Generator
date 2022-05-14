@@ -1,6 +1,6 @@
  <template>
     <div class="form__input-box">
-        <label class="form__input-label">Fin</label>
+        <label class="form__input-label">{{label}}</label>
         <Datepicker v-model="date" :format="format" />
     </div>
 </template>
@@ -39,13 +39,13 @@
 <style >
   @import '@vuepic/vue-datepicker/dist/main.css';
 
-/* ------------------- */
 /* Input container */
 .form__input-box{
     margin: 15px 0;
     height: 3.438rem;
     position: relative;
     width: auto;
+    /* box-shadow: 0px 0px 0px 0.3px #565656; */
 }
 
 /* Label of input */
@@ -61,8 +61,6 @@
     top: -14px;
     z-index: 2;
 }
-
-/* ------------------- */
 
 /* Clock button */
 .dp__button{
@@ -114,7 +112,8 @@
 }
 
 .dp__main{
-    height: 3.2rem;
+    /* height: 3.2rem; */
+    height: 3rem;
     width: 260px;
 }
 
@@ -124,7 +123,7 @@
 
 /* Input Container*/
 .dp__input_wrap{
-    height: 4rem;
+    height: 3.438rem;
     width: 100%;
 }
 
@@ -136,6 +135,8 @@
     height: 100%;
     padding: 10px 15px;
     width: 100%;
+        border: none;
+    box-shadow: 0px 0px 0px 0.3px #565656;
 }
 
 .dp__month_year_row{
@@ -203,5 +204,8 @@
 .dp__theme_light {
   --dp-menu-border-color: #fff;
   --dp-success-color: #4562e6;
+  /* --dp-border-color: #ddd; */
+  /* --dp-border-color: rgb(184, 184, 184); */
+  /* --dp-border-color: #fff; */
 }
 </style>

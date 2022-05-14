@@ -14,16 +14,8 @@
             <!-- 2 inputs in a row -->
             <h3 class="form__title">Fecha de nacimiento</h3>
             <div class="form__flex-container">
-              <div class="form__input-box">
-                <label class="form__input-label">Inicio</label>
-                <input type="text" class="form__input" />
-                <img class="calendar-image" src="@/assets/icons/calendar.svg" alt="calendar">
-              </div>
-              <div class="form__input-box">
-                <label class="form__input-label">Fin</label>
-                <input type="text" class="form__input" />
-                <img class="calendar-image" src="@/assets/icons/calendar.svg" alt="calendar">
-              </div>
+              <Pickerdate label="Inicio"/>
+              <Pickerdate label="Fin"/>
             </div>
               <div class="form__button-container">
                 <Button :isDisabled="true" :isBigger="true" text="Generar Reporte"/>
@@ -33,6 +25,10 @@
 </template>
 
 <script>
+import Button from '../Button/Button'
+import Pickerdate from '../Pickerdate/Pickerdate'
+
+
 export default {
     name: 'ModalComponent',
       props: {
@@ -41,6 +37,10 @@ export default {
         default: false,
       },
     },
+    components: {
+      Pickerdate,
+      Button,
+    }
 }
 </script>
 
@@ -48,7 +48,6 @@ export default {
 
 <style lang="scss" scoped>
     @import "@/scss/abstracts/variables.scss";
-// ----------------
 
 .calendar-image{
   position: absolute;
@@ -148,7 +147,7 @@ export default {
 }
 
 .modal{
-       width: 33.438rem;
+    width: 37.438rem;
     height: 26.438rem;
     background: #FFF;
     border-radius: 10px;
