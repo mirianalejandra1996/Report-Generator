@@ -14,8 +14,8 @@
             <!-- 2 inputs in a row -->
             <h3 class="form__title">Fecha de nacimiento</h3>
             <div class="form__flex-container">
-              <Pickerdate label="Prueba" v-model="formValues.initDate" :dateValue="formValues.initDate"/>
-
+              <Pickerdate label="Inicio" v-model="formValues.initDate" :dateValue="formValues.initDate"/>
+              <Pickerdate label="Fin" v-model="formValues.endDate" :dateValue="formValues.endDate"/>
             </div>
               <div class="form__button-container">
                 <Button :isDisabled="true" :isBigger="true" text="Generar Reporte"/>
@@ -30,7 +30,6 @@
 </template>
 
 <script>
- import { ref } from 'vue';
 import Button from '../Button/Button'
 import Pickerdate from '../Pickerdate/Pickerdate'
 
@@ -56,25 +55,6 @@ export default {
       Pickerdate,
       Button,
     },
-    setup() {
-            const test = 'hola';
-            const date = ref(new Date());
-            const format = (date) => {
-                const day = date.getDate();
-                const month = date.getMonth() + 1;
-                const year = date.getFullYear();
-
-                return `${day}/${month}/${year}`;
-            }
-            console.log('props', this);
-            console.log('date', date);
-            console.log('fecha', test);
-
-            return {
-                date,
-                format,
-            }
-        },
 }
 </script>
 
