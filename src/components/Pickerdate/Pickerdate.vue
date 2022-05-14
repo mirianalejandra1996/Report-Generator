@@ -45,7 +45,6 @@
     height: 3.438rem;
     position: relative;
     width: auto;
-    /* box-shadow: 0px 0px 0px 0.3px #565656; */
 }
 
 /* Label of input */
@@ -70,7 +69,7 @@
 /* Days of others months (not current) */
 .dp__calendar_header{
     color: #757575;
-    font-weight: 400;
+    font-weight: 500;
     margin-top: 7px;
 }
 
@@ -112,7 +111,6 @@
 }
 
 .dp__main{
-    /* height: 3.2rem; */
     height: 3rem;
     width: 260px;
 }
@@ -204,6 +202,7 @@
 .dp__theme_light {
   --dp-menu-border-color: #fff;
   --dp-success-color: #4562e6;
+  --dp-text-color: #565656;
   /* --dp-border-color: #ddd; */
   /* --dp-border-color: rgb(184, 184, 184); */
   /* --dp-border-color: #fff; */
