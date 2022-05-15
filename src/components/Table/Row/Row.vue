@@ -1,12 +1,10 @@
 <template>
-
-  <!-- <tr> -->
-  <tr ref="exportable_row">
+  <tr>
     <td scope="row" class="table__field table__text-body--small left">
-            {{title}}
+            {{formattedData.title}}
     </td>
     <td scope="row" class="table__field table__text-body center">
-            {{date}}
+        {{formattedData.dateCreation}}
     </td>
     <td class="table__field right flex" @click="exportExcel">
             <span class="table__text-body--bold">Descargar</span>
@@ -16,48 +14,30 @@
 </template>
 
 <script>
-import {pad} from "@/helpers/formatter";
+import {dateFormatted, pad} from "@/helpers/formatter";
 import * as XLSX from 'xlsx';
 
 export default {
     name: "RowComponent",
     data(){
         return {
-            title: null,
-            date: null,
-            dataToExport: [
-                {
-                name: 'Jorge',
-                occupation: 'Best Admin'
-                },
-                {
-                name: 'Héctor',
-                occupation: 'Worst Admin'
-                },
-                {
-                name: 'gmq',
-                occupation: ':shrug:'
-                }
-            ]
+            formattedData: null,
         }
     },
      methods: {
     exportExcel: function () {
    
-        console.log('quiero esto', this.reportData);
+        const report = [{
+            "Reporte Nº" : this.formattedData.id,
+            "Fecha de creación" : this.formattedData.dateCreation,
+            "Descripción del reporte": this.formattedData.title,
+            "Fecha de Nacimiento": this.formattedData.dateBirth,
+            "Fecha de Fallecimiento": this.formattedData.dateEnd,
+        }]
 
-      let data = XLSX.utils.json_to_sheet(
-        this.dataToExport,
-        {
-        header: ["transaction_date", "business_name", "credit", "rate"]
-        }
-        )
-        data["A1"].v = "Fecha"
-        data["B1"].v = "Empresa solicitante"
-        data["C1"].v = "Depósitos"
-        data["D1"].v = "Tasa"
+      let data = XLSX.utils.json_to_sheet(report)
       const workbook = XLSX.utils.book_new()
-      const filename = 'devschile-admins'
+      const filename = `REPORT${this.formattedData.id}`
       XLSX.utils.book_append_sheet(workbook, data, filename)
       XLSX.writeFile(workbook, `${filename}.xlsx`)
     }
@@ -69,13 +49,15 @@ export default {
         }
     },
     created (){
-        this.title = this.reportData.title;
+        const formattedData = {
+            id: pad(this.reportData.id,4),
+            title: this.reportData.title,
+            dateBirth:dateFormatted(this.reportData.birth_date),
+            dateEnd: dateFormatted(this.reportData.end_date),
+            dateCreation: dateFormatted(this.reportData.dateCreation)
+        }
 
-        const day = new Date(this.reportData.birth_date).getDate();
-        const month = new Date(this.reportData.birth_date).getMonth() + 1;
-        const year = new Date(this.reportData.birth_date).getFullYear();
-
-        this.date = `${pad(day,2)}/${pad(month,2)}/${pad(year,4)}`;
+        this.formattedData = formattedData;
     },
 }
 </script>
@@ -90,6 +72,7 @@ export default {
     .table__field {
     border: 0;
     position: relative;
+    text-transform: capitalize;
     }
    
     // ! Removing last vertical line

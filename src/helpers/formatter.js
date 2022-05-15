@@ -1,3 +1,5 @@
+import moment from "moment";
+
 // get format 1 to 01
 export const pad = (number, length) => {
   var str = "" + number;
@@ -5,4 +7,8 @@ export const pad = (number, length) => {
     str = "0" + str;
   }
   return str;
+};
+
+export const dateFormatted = (date) => {
+  return moment(date).format("DD/MM/YYYY");
 };

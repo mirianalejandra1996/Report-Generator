@@ -1,5 +1,4 @@
 <template>
-      <!-- <div @click="$emit('closeModal')" class="modal__container" :class="isModalOpen && 'visible'"> -->
       <div @click="$emit('closeModal')" class="modal__container" :class="isModalOpen && 'visible'">
       </div>
         <div class="modal" :class="!isModalOpen && 'close'">
@@ -15,17 +14,12 @@
             <!-- 2 inputs in a row -->
             <h3 class="form__title">Fecha de nacimiento</h3>
             <div class="form__flex-container">
-              <Pickerdate label="Inicio" v-model="formValues.initDate" :dateValue="formValues.initDate"/>
+              <Pickerdate label="Inicio" v-model="formValues.birthDate" :dateValue="formValues.birthDate"/>
               <Pickerdate label="Fin" v-model="formValues.endDate" :dateValue="formValues.endDate"/>
             </div>
               <div class="form__button-container">
                 <div class="form__err-container"><span v-if="errorMsg">{{errorMsg}}</span></div>
                 <Button :isDisabled="isDisabled" :isBigger="true" text="Generar Reporte"/>
-              <!-- <div>
-                <pre>
-                  {{JSON.stringify(formValues, null,2)}}
-                </pre>
-              </div> -->
               </div>
           </form>
         </div>
@@ -34,18 +28,18 @@
 <script>
 import Button from '../Button/Button'
 import Pickerdate from '../Pickerdate/Pickerdate'
-
+import moment from 'moment';
 
 export default {
     name: 'ModalComponent',
-    // emits: ['closeModal'],
     emits: ['closeModal','generateReport'],
     data(){
       return {
         formValues: {
           reportDescription: '',
-          initDate: '',
+          birthDate: '',
           endDate: '',
+
         },
         errorMsg: '',
         isDisabled: false,
@@ -61,23 +55,12 @@ export default {
         default: false,
       },
     },
-    watch: {
-      formValues : function (oldData, newData ) {
-        this.formValues = newData;
-        console.log('cambiooo')
-        return 'siiii'
-      },
-    },
-    computed() {
-          console.log('computed??')
-    },
     methods: {
       handleSubmit(){
-        console.log('handleSubmit!!')
         this. errorMsg = ""
         // this.isDisabled = true
     // ! Control empty fields
-        if (!this.formValues.reportDescription || !this.formValues.initDate || !this.formValues.endDate){
+        if (!this.formValues.reportDescription || !this.formValues.birthDate || !this.formValues.endDate){
           this. errorMsg = "Campos deben ser rellenados"
           return 
         }
@@ -90,7 +73,7 @@ export default {
             return 
         }
 
-        const birthDate = new Date(this.formValues.initDate).getTime()
+        const birthDate = new Date(this.formValues.birthDate).getTime()
         const endDate = new Date(this.formValues.endDate).getTime()
         if(birthDate === endDate){
           this.errorMsg = "Debe ingresar fechas diferentes"
@@ -106,17 +89,14 @@ export default {
           // this.isDisabled = false;
       },
       addReport(){
-        console.log('generando reportee!')
-        this.$emit('generateReport', this.formValues)
+        this.$emit('generateReport', {...this.formValues, dateCreation: moment()})
         this.formValues.reportDescription = ''
         this.formValues.endDate = ''
-        this.formValues.initDate = ''
+        this.formValues.birthDate = ''
       }
     }
 }
 </script>
-
-
 
 <style lang="scss" scoped>
     @import "@/scss/abstracts/variables.scss";

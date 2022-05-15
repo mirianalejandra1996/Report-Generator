@@ -9,8 +9,6 @@
                 </tr>
             </thead>
             <tbody class="table__body">
-                <!-- <Row v-for="report in reports" :key="report.id" :date="report.birth_date" :title="report.title"/> -->
-                <!-- <Row v-for="report in reports" :key="report.id" :reportData="reports"/> -->
                 <Row v-for="report in reports" :key="report.id" :reportData="report"/>
             </tbody>
         </table>
@@ -24,7 +22,6 @@ export default {
   name: "TableComponent",
   props: {
     reports : {
-      // type: Array,
       type: Object,
       required: true,
     },
@@ -32,9 +29,6 @@ export default {
   components: {
     Row,
 
-  },
-  renderTriggered () {
-    console.log(' table updated', this.reports)
   },
 };
 </script>
