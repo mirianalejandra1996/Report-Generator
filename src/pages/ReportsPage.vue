@@ -39,8 +39,6 @@ export default {
           end_date: report.endDate
         }
         
-        console.log('miraaa, ', report)
-        console.log('el nuevo', newReport)
         this.reports.push(newReport)
         this.isModalOpenP = false
     }
@@ -49,15 +47,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    @import "@/scss/abstracts/variables.scss";
+   @import "@/scss/abstracts/variables.scss";
 
-// -----------------
   .reports-page{
-        width: 100%;
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
     min-height: 100vh;
+    width: 100%;
   }
 
   .title {
