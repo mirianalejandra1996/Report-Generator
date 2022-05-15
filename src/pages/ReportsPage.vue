@@ -14,7 +14,6 @@ import Modal from '@/components/Modal/Modal';
 
 export default {
   name: "reportsPage",
-  emits: ["close-modal"],
   data(){
     return {
       isModalOpenP : false,

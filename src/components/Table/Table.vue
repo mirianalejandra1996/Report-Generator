@@ -43,7 +43,7 @@ export default {
     }
 
     .table__container {
-        background-color: #4562E6;
+        background-color: $blueMedium;
         border-radius: 10px;
         margin-top: 3.75rem;
         min-height: 9rem;
@@ -52,9 +52,9 @@ export default {
     }
 
   .table {
-        background-color: #4562E6;
+        background-color: $blueMedium;
         border-collapse: collapse;
-        color: #FFF;
+        color: $white;
         padding: 1rem;
         table-layout: fixed;
         width: 100%;

@@ -60,7 +60,6 @@ export default {
     methods: {
       handleSubmit(){
         this. errorMsg = ""
-        // this.isDisabled = true
     // ! Control empty fields
         if (!this.formValues.reportDescription || !this.formValues.birthDate || !this.formValues.endDate){
           this. errorMsg = "Campos deben ser rellenados"
@@ -88,7 +87,6 @@ export default {
         }
           this.errorMsg = "";
           this.addReport()
-          // this.isDisabled = false;
       },
       addReport(){
         this.$emit('generateReport', {...this.formValues, dateCreation: moment()})
@@ -102,6 +100,7 @@ export default {
         this.formValues.reportDescription = ''
         this.formValues.endDate = ''
         this.formValues.birthDate = ''
+        this. errorMsg = ""
       }
     }
 }
@@ -112,7 +111,7 @@ export default {
 
 .modal{
     align-items: center;
-    background: #FFF;
+    background: $white;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -144,13 +143,13 @@ export default {
 
     &__title {
       color: $black;
-      font-size: 1.55rem;
+      font-size: $fontSizeNormalBigger;
       font-weight: 900;
     }
 
     &__subtitle {
       color: $darkGray;
-      font-size: 1rem;
+      font-size: $fontSizeNormal;
       font-weight: 300;
       margin-top: 0.8rem;
     }
@@ -168,9 +167,9 @@ export default {
     width: 100%;
 
     &__title {
-      background: #fff;
-      color: #565656;
-      font-size: .8rem;
+      background: $white;
+      color: $darkGray;
+      font-size: $fontSizeSmall;
       font-weight: 300;
       left: 12px;
     }
@@ -182,9 +181,9 @@ export default {
       width: 100%;
 
       .form__input-label--upper {
-        background: #fff;
+        background: $white;
         color: $darkGray;
-        font-size: .8rem;
+        font-size: $fontSizeSmall;
         font-weight: 300;
         left: 12px;
         margin-bottom: 5px;
@@ -194,9 +193,9 @@ export default {
       }
 
       .form__input-label{
-        background: #fff;
+        background: $white;
         color: $darkGray;
-        font-size: .8rem;
+        font-size: $fontSizeSmall;
         font-weight: 300;
         left: 6px;
         margin-bottom: 5px;
@@ -209,9 +208,9 @@ export default {
         border-radius: 6px;
         // ! to make border with less than 1px, I used a box shadow to control it.
         box-shadow: 0px 0px 0px 0.3px $darkGray;
-        color: #565656;
+        color: $darkGray;
         font-family: 'ArgentumSans';
-        font-size: 0.8rem;
+        font-size: $fontSizeSmall;
         font-weight: 400;
         height: 100%;
         outline-width: 0;
@@ -234,8 +233,8 @@ export default {
     }
 
     &__err-container {
-      color: #e53935;
-      font-size: 1rem;
+      color: $red;
+      font-size: $fontSizeNormal;
       font-weight: 500;
       height: 1rem;
       margin-bottom: 0.5rem;

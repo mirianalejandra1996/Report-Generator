@@ -19,6 +19,6 @@ export default {
 <style scoped>
 
 .tkambio-layout{
-    min-height: 100vh;
+  min-height: 100vh;
 }
 </style>

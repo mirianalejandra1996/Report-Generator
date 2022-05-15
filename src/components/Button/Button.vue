@@ -26,47 +26,47 @@ export default {
     @import "@/scss/abstracts/variables.scss";
 
     .button{
-    background: $yellow;
-    margin-top: 1.875rem;
-    border: none;
-    border-radius: 3.125rem;
-    height: 2.688rem;
-    width: 11.688rem;
-    cursor: pointer;
-    transition: .2s ease-in-out;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    
-  }
+      align-items: center;
+      background: $yellow;
+      border-radius: 3.125rem;
+      border: none;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      cursor: pointer;
+      display: flex;
+      height: 2.688rem;
+      justify-content: center;
+      margin-top: 1.875rem;
+      transition: .2s ease-in-out;
+      width: 11.688rem;
 
-  .button:hover{
-    background: #e6ac0c;
-    transition: .2s ease-in-out;
-  }
+      &__text{
+        color: $black;
+        font-family: 'ArgentumSans', sans-serif;
+        font-size: $fontSizeNormal;
+        font-weight: 400;
+        margin-bottom: 0.3rem;
+      }
 
-  .bigger{
-    width: 13.875rem;
-    height: 3.438rem;
-    margin-top: 0.5rem;
-  }
 
-  .disabled{
-      background-color: $mediumGray;
-   }
+      &:hover{
+        background: $darkYellow;
+        transition: .2s ease-in-out;
+      }
 
-   .button.disabled:hover{
-    background-color: $mediumGray;
-    cursor: no-drop;
-  }
+       &.bigger{
+        height: 3.438rem;
+        margin-top: 0.5rem;
+        width: 13.875rem;
+      }
 
-  .button__text{
-    font-size: 1rem;
-    font-weight: 400;
-    color: $black;
-    font-family: 'ArgentumSans', sans-serif;
-    margin-bottom: 0.3rem;
+      &.disabled{
+        background-color: $mediumGray;
+      }
+
+      &.disabled:hover{
+        background-color: $mediumGray;
+        cursor: no-drop;
+      }
   }
-  
+ 
 </style>

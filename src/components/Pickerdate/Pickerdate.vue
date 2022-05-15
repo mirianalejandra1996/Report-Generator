@@ -6,8 +6,10 @@
 </template>
 
 <script>
+    import { dateFormatted } from '@/helpers/formatter';
     import Datepicker from '@vuepic/vue-datepicker';
     import { ref } from 'vue';
+    
 
     export default {
         name: "CalendarComponent",
@@ -29,11 +31,7 @@
         setup() {
             const date = ref(new Date());
             const format = (date) => {
-                const day = date.getDate();
-                const month = date.getMonth() + 1;
-                const year = date.getFullYear();
-
-                return `${day}/${month}/${year}`;
+                return dateFormatted(date)
             }
             return {
                 date,
@@ -93,11 +91,11 @@
 }
 
 /* Calendar Icon container */
-    .dp__input_icons{
-        color: #707070;
-        height: 25px;
-        width: auto;
-    }
+.dp__input_icons{
+    color: #707070;
+    height: 25px;
+    width: auto;
+}
 
 /* Calendar Icon */
 .dp__input_wrap > .dp__input_icon:first-of-type{
@@ -210,8 +208,6 @@
   --dp-menu-border-color: #fff;
   --dp-success-color: #4562e6;
   --dp-text-color: #565656;
-  /* --dp-border-color: #ddd; */
-  /* --dp-border-color: rgb(184, 184, 184); */
-  /* --dp-border-color: #fff; */
 }
+
 </style>

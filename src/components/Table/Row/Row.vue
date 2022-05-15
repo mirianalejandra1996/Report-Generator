@@ -65,55 +65,62 @@ export default {
 <style lang="scss" scoped>
 
     @import "@/scss/abstracts/variables.scss";
+
     td, th {
         padding: 1rem 0;
     }
 
     .table__field {
-    border: 0;
-    position: relative;
-    text-transform: capitalize;
+        border: 0;
+        position: relative;
+        text-transform: capitalize;
     }
    
-    // ! Removing last vertical line
+    // ! Add all fields a vertical line except last vertical line of column
+    // | A || B || C |
     tr .table__field:not(:last-child)::after {
-       content: '';
-    background-color: #C4C4C4;
-    width: 4px;
-    height: 45%;
-    position: absolute;
-    right: 0;
-    top: calc(50% - 0.7rem);
+        background-color: $gray;
+        content: '';
+        height: 45%;
+        position: absolute;
+        right: 0;
+        top: calc(50% - 0.7rem);
+        width: 4px;
     }
     
+    // Create horizontal lines between rows
     tr + tr { 
-        border-top: 1px solid $gray;
         border-bottom: 1px solid $gray;
+        border-top: 1px solid $gray;
     }
 
+    // Remove last line of row
     .table__body tr:last-of-type {
         border-bottom: none;
     }
 
+    // Remove first line of row
     .table__body tr:first-of-type {
         border-top: none;
     }
 
-
+    // For download field (contains a text + image)
     .flex {
-        text-align: end;
-        display: flex;
-        justify-content: flex-end;
         align-items: end;
         cursor: pointer;
+        display: flex;
+        justify-content: flex-end;
+        text-align: end;
         transition: .1s ease-in-out;
     }
 
     .flex:hover {
-        background-color: #3a56d1;
+        background-color: $blueMediumLighter;
         transition: .2s ease-in-out;
     }
 
+
+// Alignment of text fields
   .right {
       text-align: end;
   }
@@ -126,33 +133,27 @@ export default {
       text-align: start;
   }
 
-    
-.table__text-header {
-    font-size: $fontSizeNormal;
-    color: $white;
-    font-weight: 400;
-}
 
 .table__text-body{
-    font-size: $fontSizeNormal;
     color: $white;
+    font-size: $fontSizeNormal;
     font-weight: 400;
 }
 
 .table__text-body--small{
-    font-size: $fontSizeSmall;
     color: $white;
+    font-size: $fontSizeSmaller;
     font-weight: 400;
 }
 
 .table__text-body--bold{
-    font-size: $fontSizeNormal;
     color: $white;
+    font-size: $fontSizeNormal;
     font-weight: 700;
 }
 
 .download-image{
-        width: 1.25rem;
-        margin-left: 0.3rem;
-    }
+    margin-left: 0.3rem;
+    width: 1.25rem;
+}
 </style>

@@ -1,6 +1,6 @@
 // Global stylesheet where we will import all other stylesheets
 
-// fonts
+// fonts typography
 @import './abstracts/fonts.scss';
 // variables
 @import './abstracts/variables.scss';
@@ -31,6 +31,6 @@ h2 {
 }
 
 p {
-    font-size: $fontSizeSmall;
+    font-size: $fontSizeSmaller;
     color: $white;
 }
