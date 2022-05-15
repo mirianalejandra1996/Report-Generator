@@ -31,13 +31,19 @@ export default {
     },
     createReport(report){
 
+      
         const newReport = {
           id: this.reports.length + 1,
           title: report.reportDescription,
           birth_date: report.birthDate,
-          end_date: report.endDate
+          end_date: report.endDate,
+          dateCreation: report.dateCreation,
         }
         
+        // Ordered by date of creation
+        const ordered = this.reports.sort((a,b)=> a.dateCreation - b.dateCreation)
+
+        this.reports = ordered
         this.reports.push(newReport)
         this.isModalOpenP = false
     }
