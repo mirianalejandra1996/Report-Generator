@@ -42,6 +42,7 @@ export default {
         console.log('miraaa, ', report)
         console.log('el nuevo', newReport)
         this.reports.push(newReport)
+        this.isModalOpenP = false
     }
   },
 };

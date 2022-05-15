@@ -1,5 +1,5 @@
 <template>
-      <div @click="$emit('closeModal')" class="modal__container" :class="isModalOpen && 'visible'">
+      <div @click="cancelRegister" class="modal__container" :class="isModalOpen && 'visible'">
       </div>
         <div class="modal" :class="!isModalOpen && 'close'">
           <h1 class="modal__title">Reporte por fecha de nacimiento</h1>
@@ -90,6 +90,13 @@ export default {
       },
       addReport(){
         this.$emit('generateReport', {...this.formValues, dateCreation: moment()})
+        this.cleanForm()
+      },
+      cancelRegister(){
+        this.$emit('closeModal')
+        this.cleanForm()
+      },
+      cleanForm(){
         this.formValues.reportDescription = ''
         this.formValues.endDate = ''
         this.formValues.birthDate = ''
