@@ -14,18 +14,35 @@
 </template>
 
 <script>
+import {pad} from "@/helpers/formatter"
+
 export default {
     name: "RowComponent",
+    data(){
+
+        return {
+            title: null,
+            date: null,
+        }
+    },
     props: {
-        title : {
-            type: String,
-            required: true,
-        },
-        date : {
-            type: String,
+        reportData: {
+            type: Object,
             required: true,
         }
-    }
+    },
+    created (){
+        console.log('row create', this.reportData)
+        this.date = 'Example date';
+        this.title = this.reportData.title;
+
+
+        const day = new Date(this.reportData.birth_date).getDate();
+        const month = new Date(this.reportData.birth_date).getMonth() + 1;
+        const year = new Date(this.reportData.birth_date).getFullYear();
+
+        this.date = `${pad(day,2)}/${pad(month,2)}/${pad(year,4)}`;
+    },
 }
 </script>
 

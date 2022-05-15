@@ -1,11 +1,11 @@
 <template>
+      <!-- <div @click="$emit('closeModal')" class="modal__container" :class="isModalOpen && 'visible'"> -->
       <div @click="$emit('closeModal')" class="modal__container" :class="isModalOpen && 'visible'">
       </div>
         <div class="modal" :class="!isModalOpen && 'close'">
           <h1 class="modal__title">Reporte por fecha de nacimiento</h1>
           <h1 class="modal__subtitle">Ingresa los siguientes datos para generar tu reporte</h1>
 
-          <!-- <form class="form" @submit="handleSubmit"> -->
           <form class="form" @submit.prevent="handleSubmit">
             <!-- First row -->
             <div class="form__input-box">
@@ -38,7 +38,8 @@ import Pickerdate from '../Pickerdate/Pickerdate'
 
 export default {
     name: 'ModalComponent',
-    
+    // emits: ['closeModal'],
+    emits: ['closeModal','generateReport'],
     data(){
       return {
         formValues: {
@@ -47,7 +48,6 @@ export default {
           endDate: '',
         },
         errorMsg: '',
-        // isDisabled: true,
         isDisabled: false,
       }
     },
@@ -63,8 +63,6 @@ export default {
     },
     watch: {
       formValues : function (oldData, newData ) {
-
-        // this.formValues = newData;
         this.formValues = newData;
         console.log('cambiooo')
         return 'siiii'
@@ -95,17 +93,24 @@ export default {
         const birthDate = new Date(this.formValues.initDate).getTime()
         const endDate = new Date(this.formValues.endDate).getTime()
         if(birthDate === endDate){
-          console.log('son la misma fecha')
-          this. errorMsg = "Debe ingresar fechas diferentes"
+          this.errorMsg = "Debe ingresar fechas diferentes"
           return
         }
 
         if(birthDate > endDate){
-          this. errorMsg = "Fecha de inicio debe ser antes que fecha fin"
+          this.errorMsg = "Fecha de inicio debe ser antes que fecha fin"
           return
         }
-          this. errorMsg = "";
+          this.errorMsg = "";
+          this.addReport()
           // this.isDisabled = false;
+      },
+      addReport(){
+        console.log('generando reportee!')
+        this.$emit('generateReport', this.formValues)
+        this.formValues.reportDescription = ''
+        this.formValues.endDate = ''
+        this.formValues.initDate = ''
       }
     }
 }
