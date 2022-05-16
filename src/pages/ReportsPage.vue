@@ -45,9 +45,18 @@ export default {
 
         this.reports = ordered
         this.reports.push(newReport)
+        localStorage.setItem('registers', JSON.stringify(this.reports))
         this.isModalOpenP = false
     }
   },
+  created (){
+    let database = JSON.parse(localStorage.getItem('registers'));
+    if (database === null){
+      this.reports = [];
+    } else {
+      this.reports = database;
+    }
+  }
 };
 </script>
 
