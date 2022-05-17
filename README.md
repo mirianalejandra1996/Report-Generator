@@ -4,7 +4,7 @@ This web application has been developed with the [Vue Framework](https://vuejs.o
 
 The purpose is to create an interface that allows the user to view a list of reports that have been generated, and allows these reports to be downloaded in .xls (Excel) format files 📝
 
-## Requirements
+## Requirements 💡
 
 + Develop a SPA application in Vue Js, which has as an interface a button to generate user reports and a table that lists the generated reports.
 
@@ -16,7 +16,7 @@ The purpose is to create an interface that allows the user to view a list of rep
 
 + Publish it as a static page on github, and simulate the information with static data (the list of reports or use localstorage, etc) to be able to evaluate the finish of the design. (simulates the back-end with static data).
 
-## Development Considerations
+## Development Considerations 👩🏽‍💻
 
 For error handling, respective validations were carried out so that the user cannot enter numbers in the first field, leave no empty space, or that the value of the final date is less than the value of the initial date.
 
@@ -49,7 +49,7 @@ The views are as follows:
 
 <div align=center><img width="100%" src="https://user-images.githubusercontent.com/91838806/168898214-a27fadb5-111f-46cb-a794-32abe4a6fbd1.png" ></div>
 
-### Excel report
+### Excel report 
 
 <div align=center><img width="100%" src="https://user-images.githubusercontent.com/91838806/168897267-466d0ba3-c8ca-48e7-a307-9a8f266bd7f7.png" ></div>
 
