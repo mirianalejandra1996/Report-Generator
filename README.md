@@ -1,59 +1,58 @@
 # Reports Generator 📄
 
-Esta aplicación web se ha desarrollado con el [Framework de Vue](https://vuejs.org/) siguiendo un desafío técnico 🚀
+This web application has been developed with the [Vue Framework](https://vuejs.org/)  following a technical challenge 🚀
 
-El propósito es crear una interfaz que permita al usuario visualizar un listado de reportes que han sigo generados, y permita descargalos estos reportes en archivos de formato .xls (Excel) 📝
+The purpose is to create an interface that allows the user to view a list of reports that have been generated, and allows these reports to be downloaded in .xls (Excel) format files 📝
 
-## Consideraciones
+## Requirements
 
-+ Desarrollar una aplicación SPA en Vue Js, la cual tenga como interfaz un botón para generar los reportes  de usuarios y una tabla que liste los reportes generados.
++ Develop a SPA application in Vue Js, which has as an interface a button to generate user reports and a table that lists the generated reports.
 
-+ Considerar diseño responsivo y fidelidad con el diseño propuesto.
++ Consider responsive design and fidelity to the proposed design.
 
-+ Cada vez  que se aprieta el botón  “generar reporte” se abrirá un formulario para crear un nuevo reporte de usuarios filtrado por fecha debiendo ingresar el “título del reporte” así como la “fecha inicio” y “fecha fin” basadas en la fecha de nacimiento (birth_date) de los usuarios.
++ Each time the “generate report” button is pressed, a form will open to create a new user report filtered by date, having to enter the “report title” as well as the “start date” and “end date” based on the date of birth (birth_date) of the users.
 
-    Considera todas las validaciones de seguridad que creas conveniente.
+    Consider all the security validations that you think are convenient.
 
-+ Publicarlo  como página estática en github, y simula la información  con data estática (el listado de reportes o usa localstorage, etc) para poder evaluar el acabado del diseño. (simula el back-end con data estática).
++ Publish it as a static page on github, and simulate the information with static data (the list of reports or use localstorage, etc) to be able to evaluate the finish of the design. (simulates the back-end with static data).
 
-## Consideraciones para el desarrollo
+## Development Considerations
 
-Para el manejo de errores, se realizaron respectivas validaciones para que el usuario no pueda ingresar numeros en el primer campo,dejar ningún espacion vacío, ni que el valor de la fecha final sea menor que el valor de la fecha inicial. 
+For error handling, respective validations were carried out so that the user cannot enter numbers in the first field, leave no empty space, or that the value of the final date is less than the value of the initial date.
 
-Se implementó un componente del paquete de [Vue 3 datepicker](https://vue3datepicker.com/) proporcionaba la funcionalidad, pero se realizaron ciertas modificaciones manipulando los estilos para que fuera lo más parecido posible al prototipo solicitado.
+A component from the
+[Vue 3 datepicker](https://vue3datepicker.com/) package was implemented to provide the functionality, but some modifications were made by manipulating the styles to make it as close as possible to the requested prototype.
 
-De igual manera, se le agregaron propiedades para que el formato fuera "DD/MM/YYYY", ya que inicialmente mostraba "MM/DD/YYYY, HH:MM"
+Similarly, properties were added so that the format was "DD/MM/YYYY", since it initially showed "MM/DD/YYYY, HH:MM"
 
 <div align=center><img width="100%" src="https://user-images.githubusercontent.com/91838806/168896000-667051ac-ecb0-42e6-ab0c-c83bf80e8fba.png" ></div>
 
-Por lo que finalmete se convirtió en el siguiente pickerdate
+So it finally became the next pickerdate
 
 <div align=center><img width="100%" src="https://user-images.githubusercontent.com/91838806/168896457-90088c8a-a973-49ab-94e0-8ef49500a305.png" ></div>
 
-En cuanto a los archivos de excel, estos se descargan haciendo click de "Descargar" a la fila correspondiente, y el nombre del archivo sería REPORT + Numero de id. (Ejemplo: REPORT0001)
+As for the excel files, these are downloaded by clicking "Download" on the corresponding row, and the file name would be REPORT + ID number. (Example: REPORT0001)
 
 ## Final result of the project 🎯
 
-Las vistas son las siguientes:
+The views are as follows:
 
-### Vista inicial sin registros
+### Initial view without records
 
 <div align=center><img width="100%" src="https://user-images.githubusercontent.com/91838806/168897420-84578356-8846-4f82-af55-c39756fd164d.png" ></div>
 
-### Crear nuevo registro
+### Create new record
 
-<div align=center><img width="100%" src="https://user-images.githubusercontent.com/91838806/168897679-e768a418-2d69-43f5-ab88-90ca5d75ca14.png" ></div>
+<div align=center><img width="100%" src="https://user-images.githubusercontent.com/91838806/168899736-02543fbc-093b-4376-914e-58da5ea7b6f6.png" ></div>
 
-### Registros listados
+### Listed Records
 
 <div align=center><img width="100%" src="https://user-images.githubusercontent.com/91838806/168898214-a27fadb5-111f-46cb-a794-32abe4a6fbd1.png" ></div>
 
-### Reporte de Excel
+### Excel report
 
 <div align=center><img width="100%" src="https://user-images.githubusercontent.com/91838806/168897267-466d0ba3-c8ca-48e7-a307-9a8f266bd7f7.png" ></div>
 
-
-----
 
 This application was deployed in [Github Pages](https://github.com), in which you have access in the following [Link](https://mirianalejandra1996.github.io/Report-Generator/)
 
