@@ -42,7 +42,7 @@ Las vistas son las siguientes:
 
 ### Crear nuevo registro
 
-<div align=center><img width="100%" src="https://user-images.githubusercontent.com/91838806/168897679-e768a418-2d69-43f5-ab88-90ca5d75ca14.png" ></div>
+<div align=center><img width="100%" src="https://user-images.githubusercontent.com/91838806/168899736-02543fbc-093b-4376-914e-58da5ea7b6f6.png" ></div>
 
 ### Registros listados
 
