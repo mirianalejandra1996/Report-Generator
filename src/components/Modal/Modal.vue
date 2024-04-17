@@ -70,7 +70,7 @@ export default {
         var expression = /^[a-zA-Z\s]*$/;
 
         if(!expression.test(this.formValues.reportDescription)){ //
-            this. errorMsg = "Solo ingresar letras en la descripción"
+            this. errorMsg = "Solamente puede ingresar letras en la descripción"
             return 
         }
 
